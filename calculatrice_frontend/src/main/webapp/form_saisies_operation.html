@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Calculatrice</title>
+    <script>
+        // Cette fonction s'exécute une fois la page chargée
+        window.onload = function () {
+            // Récupération des composants dynamiques de l'URL
+            const host = window.location.hostname;
+            const port = window.location.port ? ':' + window.location.port : '';
+            const contextPath = '/calculatrice_backend'; // À adapter si besoin
+            const endpoint = '/calculate';
+
+            // Construction de l'URL complète
+            const actionURL = window.location.protocol + '//' + host + port + contextPath + endpoint;
+
+            // Affectation dynamique de l'URL à l'attribut "action" du formulaire
+            document.getElementById('calc-form').action = actionURL;
+        }
+    </script>
+</head>
+<body>
+    <div>  
+        <form id="calc-form" method="get">
+            <p>Opérande 1 : <input type="text" name="operande1" /></p>
+            <p>Opérande 2 : <input type="text" name="operande2" /></p>
+
+            <select name="operation">
+                <option value="add">+</option>
+                <option value="sub">-</option>
+                <option value="div">/</option>
+                <option value="mul">*</option>
+            </select>
+
+            <p><input type="submit" value="Calculer" /></p>
+        </form>
+    </div>
+</body>
+</html>
